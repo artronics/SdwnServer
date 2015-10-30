@@ -17,6 +17,7 @@ public class SdwnNetworkController
 {
     private SdwnNetworkService service;
 
+    @Autowired
     public SdwnNetworkController(SdwnNetworkService service)
     {
         this.service = service;

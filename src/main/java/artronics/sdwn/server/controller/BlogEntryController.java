@@ -3,6 +3,7 @@ import artronics.sdwn.server.model.BlogEntry;
 import artronics.sdwn.server.resources.BlogEntryResource;
 import artronics.sdwn.server.resources.asm.BlogEntryResourceAsm;
 import artronics.sdwn.server.services.BlogEntryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

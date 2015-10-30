@@ -7,6 +7,7 @@ import artronics.sdwn.server.resources.asm.SdwnNetworkResourceAsm;
 import artronics.sdwn.server.resources.asm.SdwnNetworkSettingResourceAsm;
 import artronics.sdwn.server.services.SdwnNetworkSettingService;
 import com.sun.deploy.net.HttpResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ public class SdwnNetworkSettingController
 {
     private SdwnNetworkSettingService settingService;
 
+    @Autowired
     public SdwnNetworkSettingController(
             SdwnNetworkSettingService settingService)
     {

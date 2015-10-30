@@ -12,8 +12,9 @@ public class Account
 
     private String password;
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id",nullable = false,unique = true)
     public Long getId()
     {
         return id;
@@ -24,7 +25,7 @@ public class Account
         this.id = id;
     }
 
-    @Column(name = "email")
+    @Column(name = "email",nullable = false,unique = true)
     public String getEmail()
     {
         return email;
@@ -35,7 +36,7 @@ public class Account
         this.email = email;
     }
 
-    @Column(name = "password")
+    @Column(name = "password",nullable = false,unique = false)
     public String getPassword()
     {
         return password;

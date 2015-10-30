@@ -43,4 +43,15 @@ public class AccountRepoTest
         assertEquals(createdAcc.getEmail(),"jalalhosseiny@gmail.com");
         assertEquals(createdAcc.getPassword(),"foo");
     }
+
+    @Test
+    @Transactional
+    public void find_account_by_email()
+    {
+        Account fetchAcc = repo.findAccountByEmail("jalalhosseiny@gmail.com");
+
+        assertNotNull(fetchAcc);
+        assertEquals(fetchAcc.getPassword(), account.getPassword());
+        assertEquals(fetchAcc.getEmail(), account.getEmail());
+    }
 }

@@ -2,6 +2,7 @@ package artronics.sdwn.server.controller;
 
 import artronics.sdwn.server.model.Account;
 import artronics.sdwn.server.services.AccountService;
+import artronics.sdwn.server.services.exceptions.ModelAlreadyExistsException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -51,7 +52,17 @@ public class AccountControllerTest
                                 .content("{\"name\":\"test\",\"password\":\"test\"}")
                                 .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isCreated());
+    }
 
+    @Test
+    public void create_alreasy_existed_acc() throws Exception
+    {
+        when(service.createAccount(any(Account.class))).thenThrow(new ModelAlreadyExistsException
+                                                                          ());
 
+        mockMvc.perform(post("/accounts")
+                                .content("{\"email\":\"test\",\"password\":\"test\"}")
+                                .contentType(MediaType.APPLICATION_JSON))
+               .andExpect(status().isConflict());
     }
 }

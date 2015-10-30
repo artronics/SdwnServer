@@ -13,16 +13,18 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+
+    <!--<import resource="mysql-config.xml"/>-->
+    <import resource="h2mem-config.xml"/>
+
     <context:component-scan base-package="artronics.sdwn.server.repositories.jpa"/>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="username" value="sa"/>
-        <property name="password" value="sa"/>
-        <property name="url" value="jdbc:h2:mem:test"/>
-        <property name="driverClassName" value="org.h2.Driver"/>
-    </bean>
+    <tx:annotation-driven/>
 
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <context:component-scan base-package="artronics.sdwn.server.services.impl"/>
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
@@ -31,32 +33,11 @@
             <map>
                 <entry key="hibernate.hbm2ddl.auto" value="create-drop"/>
                 <entry key="hibernate.show_sql" value="true"/>
+                <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             </map>
         </property>
         <property name="packagesToScan" value="artronics.sdwn.server.model"/>
     </bean>
 
-    <!--<bean id="sessionFactory"-->
-          <!--class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-
-        <!--<property name="mappingLocations">-->
-            <!--<list>-->
-                <!--<value>classpath:db-mappings/SdwnNetwork.hbm.xml</value>-->
-            <!--</list>-->
-        <!--</property>-->
-
-        <!--<property name="hibernateProperties">-->
-            <!--<props>-->
-                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
-                <!--<prop key="hibernate.show_sql">false</prop>-->
-            <!--</props>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-    <tx:annotation-driven/>
-
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
-
-    <context:component-scan base-package="artronics.sdwn.server.services.impl"/>
 </beans>

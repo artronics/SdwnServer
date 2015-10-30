@@ -23,16 +23,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-//@WebAppConfiguration
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
-//@ContextConfiguration({
-//        "classpath*:/WEB-INF/mcx-dispatcher-servlet.xml"
-//        })
+
 public class SdwnNetworkControllerTest
 {
-//    @Autowired
-//    private WebApplicationContext ctx;
 
     @InjectMocks
     private SdwnNetworkController controller;

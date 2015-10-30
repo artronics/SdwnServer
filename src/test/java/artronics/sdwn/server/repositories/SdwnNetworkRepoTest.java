@@ -1,6 +1,7 @@
 package artronics.sdwn.server.repositories;
 
 import artronics.sdwn.server.model.SdwnNetwork;
+import artronics.sdwn.server.model.SdwnNetworkSetting;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,14 +21,21 @@ public class SdwnNetworkRepoTest
     private SdwnNetworkRepo repo;
 
     private SdwnNetwork sdwnNetwork;
+    private SdwnNetworkSetting setting;
+
 
     @Before
     @Transactional
     @Rollback(false)
     public void setUp() throws Exception
     {
+        setting = new SdwnNetworkSetting();
+        setting.setDescription("bar");
+
         sdwnNetwork= new SdwnNetwork();
         sdwnNetwork.setDescription("foo");
+//        sdwnNetwork.setSdwnNetworkSetting(setting);
+
         repo.createSdwnNetwork(sdwnNetwork);
     }
 
@@ -37,6 +45,17 @@ public class SdwnNetworkRepoTest
         SdwnNetwork sdwnNetwork = repo.findSdwnNetwork(this.sdwnNetwork.getId());
         assertNotNull(sdwnNetwork);
         assertEquals(sdwnNetwork.getDescription(),"foo");
+    }
+
+    @Test
+    public void check_for_default_setting_creation(){
+        SdwnNetwork sdwnNetwork = repo.findSdwnNetwork(this.sdwnNetwork.getId());
+//        SdwnNetworkSetting setting =sdwnNetwork.getSdwnNetworkSetting();
+
+
+        assertNotNull(setting);
+        assertEquals(sdwnNetwork.getId(),setting.getId());
+
     }
 
     @Test

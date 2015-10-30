@@ -1,16 +1,18 @@
 package artronics.sdwn.server.controller;
 
 import artronics.sdwn.server.model.SdwnNetwork;
+import artronics.sdwn.server.model.SdwnNetworkSetting;
 import artronics.sdwn.server.resources.SdwnNetworkResource;
 import artronics.sdwn.server.resources.asm.SdwnNetworkResourceAsm;
 import artronics.sdwn.server.services.SdwnNetworkService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/jnetworks")
+@RequestMapping("/networks")
 public class SdwnNetworkController
 {
     private SdwnNetworkService service;
@@ -35,7 +37,12 @@ public class SdwnNetworkController
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody SdwnNetwork postSdwnNetwork(@RequestBody SdwnNetwork entry)
     {
-        return entry;
+        SdwnNetworkSetting setting = new SdwnNetworkSetting();
+        setting.setDescription("defualt set");
+//        entry.setSdwnNetworkSetting(setting);
+        SdwnNetwork created = service.create(entry);
+
+        return created;
     }
 
 }

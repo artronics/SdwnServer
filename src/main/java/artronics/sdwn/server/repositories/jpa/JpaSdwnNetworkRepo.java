@@ -1,8 +1,10 @@
 package artronics.sdwn.server.repositories.jpa;
 
 import artronics.sdwn.server.model.SdwnNetwork;
+import artronics.sdwn.server.model.SdwnNetworkSetting;
 import artronics.sdwn.server.repositories.SdwnNetworkRepo;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +25,7 @@ public class JpaSdwnNetworkRepo implements SdwnNetworkRepo
     public SdwnNetwork createSdwnNetwork(SdwnNetwork sdwnNetwork)
     {
         em.persist(sdwnNetwork);
+
         return sdwnNetwork;
     }
 }

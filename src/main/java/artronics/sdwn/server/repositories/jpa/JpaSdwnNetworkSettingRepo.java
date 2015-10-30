@@ -14,9 +14,17 @@ public class JpaSdwnNetworkSettingRepo implements SdwnNetworkSettingRepo
     EntityManager em;
 
     @Override
+    public SdwnNetworkSetting find(Long networkId)
+    {
+        return em.find(SdwnNetworkSetting.class, networkId);
+    }
+
+    @Override
     public SdwnNetworkSetting createSdwnNetworkSetting(SdwnNetworkSetting setting)
     {
-//        return em.persist(setting);
-        return null;
+        SdwnNetworkSetting defaultSetting = new SdwnNetworkSetting();
+        defaultSetting.setDescription("default setting");
+        em.persist(defaultSetting);
+        return defaultSetting;
     }
 }

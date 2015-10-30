@@ -1,7 +1,6 @@
 package artronics.sdwn.server.services.impl;
 
 import artronics.sdwn.server.model.SdwnNetwork;
-import artronics.sdwn.server.model.SdwnNetworkSetting;
 import artronics.sdwn.server.repositories.SdwnNetworkRepo;
 import artronics.sdwn.server.repositories.SdwnNetworkSettingRepo;
 import artronics.sdwn.server.services.SdwnNetworkService;
@@ -31,7 +30,7 @@ public class SdwnNetworkServiceImpl implements SdwnNetworkService
     {
 //        SdwnNetworkSetting setting = new SdwnNetworkSetting();
 //        setting.setDescription("default set");
-//        sdwnNetwork.setSdwnNetworkSetting(setting);
+//        sdwnNetwork.setSetting(setting);
         SdwnNetwork fetched = sdwnNetworkRepo.createSdwnNetwork(sdwnNetwork);
         if (fetched == null)
             throw new ModelNotFoundException();

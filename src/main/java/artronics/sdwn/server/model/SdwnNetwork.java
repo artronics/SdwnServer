@@ -10,7 +10,7 @@ public class SdwnNetwork
 
     private String description;
 
-//    private SdwnNetworkSetting sdwnNetworkSetting;
+    private SdwnNetworkSetting setting;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,14 +36,14 @@ public class SdwnNetwork
         this.description = description;
     }
 
-//    @OneToOne(fetch = FetchType.EAGER, mappedBy = "sdwnNetwork", cascade = CascadeType.ALL)
-//    public SdwnNetworkSetting getSdwnNetworkSetting()
-//    {
-//        return sdwnNetworkSetting;
-//    }
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "sdwnNetwork", cascade = CascadeType.ALL)
+    public SdwnNetworkSetting getSetting()
+    {
+        return setting;
+    }
 
-//    public void setSdwnNetworkSetting(SdwnNetworkSetting sdwnNetworkSetting)
-//    {
-//        this.sdwnNetworkSetting = sdwnNetworkSetting;
-//    }
+    public void setSetting(SdwnNetworkSetting setting)
+    {
+        this.setting = setting;
+    }
 }

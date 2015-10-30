@@ -1,5 +1,8 @@
 package artronics.sdwn.server.model;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,10 +16,9 @@ public class SdwnNetworkSetting
     private SdwnNetwork sdwnNetwork;
 
     @Id
-//    @GenericGenerator(name = "generator", strategy = "foreign"
-//            , parameters = @Parameter(name = "property", value = "sdwnNetwork"))
-//    @GeneratedValue(generator = "generator")
-    @GeneratedValue
+    @GenericGenerator(name = "generator", strategy = "foreign"
+            , parameters = @Parameter(name = "property", value = "sdwnNetwork"))
+    @GeneratedValue(generator = "generator")
     @Column(name = "id", unique = true, nullable = false)
     public Long getId()
     {
@@ -40,7 +42,7 @@ public class SdwnNetworkSetting
     }
 
     @OneToOne(fetch = FetchType.EAGER)
-//    @PrimaryKeyJoinColumn
+    @PrimaryKeyJoinColumn
     public SdwnNetwork getSdwnNetwork()
     {
         return sdwnNetwork;

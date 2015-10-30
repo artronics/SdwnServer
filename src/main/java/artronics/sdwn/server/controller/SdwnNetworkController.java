@@ -1,15 +1,17 @@
 package artronics.sdwn.server.controller;
 
 import artronics.sdwn.server.model.SdwnNetwork;
-import artronics.sdwn.server.model.SdwnNetworkSetting;
 import artronics.sdwn.server.resources.SdwnNetworkResource;
 import artronics.sdwn.server.resources.asm.SdwnNetworkResourceAsm;
 import artronics.sdwn.server.services.SdwnNetworkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
 
 @Controller
 @RequestMapping("/networks")
@@ -36,14 +38,17 @@ public class SdwnNetworkController
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody SdwnNetwork postSdwnNetwork(@RequestBody SdwnNetwork entry)
+    public
+    @ResponseBody
+    ResponseEntity<SdwnNetworkResource> postSdwnNetwork(@RequestBody SdwnNetwork network)
     {
-        SdwnNetworkSetting setting = new SdwnNetworkSetting();
-        setting.setDescription("defualt set");
-//        entry.setSdwnNetworkSetting(setting);
-        SdwnNetwork created = service.create(entry);
+        SdwnNetwork created = service.create(network);
 
-        return created;
+        SdwnNetworkResource resource = new SdwnNetworkResourceAsm().toResource(created);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(URI.create(resource.getLink("self").getHref()));
+
+        return new ResponseEntity<SdwnNetworkResource>(resource, headers, HttpStatus.CREATED);
     }
 
 }

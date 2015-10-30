@@ -12,6 +12,8 @@
 
     <context:component-scan base-package="artronics.sdwn.server.controller"/>
 
+    <mvc:resources mapping="/app/**" location="/static/app/"/>
+
     <mvc:annotation-driven/>
 
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -17,10 +17,11 @@ public class SdwnNetworkSetting
 
     private SdwnNetwork sdwnNetwork;
 
-    @GenericGenerator(name = "generator", strategy = "foreign"
-            , parameters = @Parameter(name = "property", value = "sdwnNetwork"))
     @Id
-    @GeneratedValue(generator = "generator")
+//    @GenericGenerator(name = "generator", strategy = "foreign"
+//            , parameters = @Parameter(name = "property", value = "sdwnNetwork"))
+//    @GeneratedValue(generator = "generator")
+    @GeneratedValue
     @Column(name = "id", unique = true, nullable = false)
     public Long getId()
     {
@@ -44,7 +45,8 @@ public class SdwnNetworkSetting
     }
 
     @OneToOne(fetch = FetchType.EAGER)
-    @PrimaryKeyJoinColumn
+//    @PrimaryKeyJoinColumn
+    @Column(name = "sdwn_network")
     public SdwnNetwork getSdwnNetwork()
     {
         return sdwnNetwork;

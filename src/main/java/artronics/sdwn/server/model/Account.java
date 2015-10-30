@@ -14,7 +14,7 @@ public class Account
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false,unique = true)
+    @Column(nullable = false,unique = true)
     public Long getId()
     {
         return id;

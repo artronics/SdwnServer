@@ -1,0 +1,3 @@
+[submodule "src/main/webapp/app"]
+	path = src/main/webapp/app
+	url = https://github.com/artronics/SdwnServer-frontend.git

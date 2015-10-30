@@ -2,10 +2,6 @@ package artronics.sdwn.server.services.exceptions;
 
 public class ServiceBaseException extends RuntimeException
 {
-    public ServiceBaseException()
-    {
-    }
-
     public ServiceBaseException(String message)
     {
         super(message);

@@ -13,7 +13,6 @@
     <context:component-scan base-package="artronics.sdwn.server.controller"/>
 
     <mvc:annotation-driven/>
-    <mvc:default-servlet-handler/>
 
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>

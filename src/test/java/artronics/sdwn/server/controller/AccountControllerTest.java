@@ -55,13 +55,13 @@ public class AccountControllerTest
     }
 
     @Test
-    public void create_alreasy_existed_acc() throws Exception
+    public void create_already_existed_acc() throws Exception
     {
         when(service.createAccount(any(Account.class))).thenThrow(new ModelAlreadyExistsException
                                                                           ());
 
         mockMvc.perform(post("/accounts")
-                                .content("{\"email\":\"test\",\"password\":\"test\"}")
+                                .content("{}")
                                 .contentType(MediaType.APPLICATION_JSON))
                .andExpect(status().isConflict());
     }

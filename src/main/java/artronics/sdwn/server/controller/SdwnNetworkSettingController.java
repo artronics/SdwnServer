@@ -1,15 +1,11 @@
 package artronics.sdwn.server.controller;
 
 import artronics.sdwn.server.model.SdwnNetworkSetting;
-import artronics.sdwn.server.resources.SdwnNetworkResource;
 import artronics.sdwn.server.resources.SdwnNetworkSettingResource;
-import artronics.sdwn.server.resources.asm.SdwnNetworkResourceAsm;
 import artronics.sdwn.server.resources.asm.SdwnNetworkSettingResourceAsm;
 import artronics.sdwn.server.services.SdwnNetworkSettingService;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

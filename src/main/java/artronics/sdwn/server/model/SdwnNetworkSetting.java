@@ -1,11 +1,6 @@
 package artronics.sdwn.server.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
-
 import javax.persistence.*;
-import java.util.Locale;
 
 @Entity
 @Table(name = "network_setting")
@@ -46,7 +41,6 @@ public class SdwnNetworkSetting
 
     @OneToOne(fetch = FetchType.EAGER)
 //    @PrimaryKeyJoinColumn
-    @Column(name = "sdwn_network")
     public SdwnNetwork getSdwnNetwork()
     {
         return sdwnNetwork;

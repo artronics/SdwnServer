@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="artronics.sdwn.server.controller"/>
+    <context:component-scan base-package="artronics.satrapi.server.controller"/>
 
     <mvc:resources mapping="/app/**" location="/static/app/"/>
 
